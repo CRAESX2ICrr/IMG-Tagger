@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import Plasma from "@/components/Plasma";
+import { Navbar } from "@/components/navbar";
+import { Background } from "@/components/background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen w-full`}
       >
+        <Navbar />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -37,23 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Toaster richColors theme="light" />
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              position: "absolute",
-            }}
-            className="inset-0 -z-10"
-          >
-            <Plasma
-              color="#3e58be"
-              speed={0.6}
-              direction="forward"
-              scale={1.1}
-              opacity={0.8}
-              mouseInteractive={true}
-            />
-          </div>
+          <Background />
           {children}
         </ThemeProvider>
       </body>
