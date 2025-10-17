@@ -1,3 +1,4 @@
+import { GalleryCards } from "@/components/gallery-cards";
 import { ImageUploadBtn } from "@/components/image-upload-btn";
 import {
   Empty,
@@ -26,6 +27,19 @@ const GalleryPage = () => {
           <ImageUploadBtn />
         </EmptyContent>
       </Empty>
+      <div className="grid grid-cols-2 gap-2 place-items-center ">
+        <GalleryCards />
+
+        <GalleryCards />
+
+        <GalleryCards />
+
+        <GalleryCards />
+
+        <GalleryCards />
+
+        <GalleryCards />
+      </div>
     </section>
   );
 };
