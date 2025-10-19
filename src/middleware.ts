@@ -1,11 +1,21 @@
 import { NextResponse, NextRequest } from "next/server";
+import { auth } from "./lib/auth";
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
-  return NextResponse.redirect(new URL("/", request.url));
+export async function middleware(request: NextRequest) {
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
+
+  const isProtectedRoute = request.nextUrl.pathname.startsWith("/gallery");
+
+  if (isProtectedRoute && !session) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: "/about/:path*",
-  //   runtime: "nodejs",
+  matcher: ["/gallery/:path*"],
+  runtime: "nodejs",
 };

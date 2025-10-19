@@ -31,13 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen w-full`}
       >
-        <Navbar />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={true}
           disableTransitionOnChange
         >
+          <Navbar />
           <Toaster richColors theme="light" />
           <Background />
           {children}
