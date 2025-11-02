@@ -28,8 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js app
-        run: npm run build
+ 
 
       # Remove unnecessary files before upload
       - name: Clean up node_modules and cache
@@ -83,4 +82,5 @@ jobs:
           app-name: 'imagetagger'
           slot-name: 'Production'
           package: .
+
 
